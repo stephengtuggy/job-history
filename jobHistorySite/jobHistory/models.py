@@ -11,11 +11,14 @@ class Employer(models.Model):
     addr1                               = models.CharField(max_length=200, blank=True, null=False, verbose_name=_("Address Line 1"))
     addr2                               = models.CharField(max_length=200, blank=True, null=False, verbose_name=_("Address Line 2"))
     addr3                               = models.CharField(max_length=200, blank=True, null=False, verbose_name=_("Address Line 3"))
-    city                                = models.CharField(max_length=200, blank=False, null=False)
+    city                                = models.CharField(max_length=200, blank=True, null=False)
     county_or_parish                    = models.CharField(max_length=200, blank=True, null=False)
     state_or_province                   = models.CharField(max_length=200, blank=True, null=False)
     zip_or_postal_code                  = models.CharField(max_length=50, blank=True, null=False)
-    country                             = models.CharField(max_length=200, blank=False, null=False)
+    country                             = models.CharField(max_length=200, blank=True, null=False)
+
+    def __str__(self):
+        return self.short_name
 
 
 class Position(models.Model):
@@ -33,12 +36,15 @@ class Position(models.Model):
     supervisor_addr1                    = models.CharField(max_length=200, blank=True, null=False, verbose_name=_("Supervisor Address Line 1"))
     supervisor_addr2                    = models.CharField(max_length=200, blank=True, null=False, verbose_name=_("Supervisor Address Line 2"))
     supervisor_addr3                    = models.CharField(max_length=200, blank=True, null=False, verbose_name=_("Supervisor Address Line 3"))
-    supervisor_city                     = models.CharField(max_length=200, blank=False, null=False)
+    supervisor_city                     = models.CharField(max_length=200, blank=True, null=False)
     supervisor_county_or_parish         = models.CharField(max_length=200, blank=True, null=False)
     supervisor_state_or_province        = models.CharField(max_length=200, blank=True, null=False)
     supervisor_zip_or_postal_code       = models.CharField(max_length=50, blank=True, null=False)
-    supervisor_country                  = models.CharField(max_length=200, blank=False, null=False)
+    supervisor_country                  = models.CharField(max_length=200, blank=True, null=False)
     can_contact                         = models.BooleanField(null=False)
+
+    def __str__(self):
+        return self.title + " @ " + self.employer.__str__()
 
 
 class JobTimePeriod(models.Model):
@@ -58,6 +64,23 @@ class JobTimePeriod(models.Model):
     work_county_or_parish               = models.CharField(max_length=200, blank=True, null=False)
     work_state_or_province              = models.CharField(max_length=200, blank=True, null=False)
     work_zip_or_postal_code             = models.CharField(max_length=50, blank=True, null=False)
-    work_country                        = models.CharField(max_length=200, blank=False, null=False)
+    work_country                        = models.CharField(max_length=200, blank=True, null=False)
 
-
+    def __str__(self):
+        retVal = self.position.__str__()
+        retVal += " from "
+        retVal += self.start_year.__str__()
+        if self.start_month is not None:
+            retVal += "-" + self.start_month.__str__()
+            if self.start_day is not None:
+                retVal += "-" + self.start_day.__str__()
+        retVal += " to "
+        if self.is_current_position:
+            retVal += "present"
+        else:
+            retVal += self.end_year.__str__()
+            if self.end_month is not None:
+                retVal += "-" + self.end_month.__str__()
+                if self.end_day is not None:
+                    retVal += "-" + self.end_day.__str__()
+        return retVal
