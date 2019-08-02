@@ -3,10 +3,10 @@ FROM python:3.7-stretch
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
-RUN sudo apt-get -y update
+RUN apt-get -y update
 # Used by tcp-port-wait.sh
-RUN sudo apt-get -y install netcat
-RUN sudo apt-get -y dist-upgrade
+RUN apt-get -y install netcat
+RUN apt-get -y dist-upgrade
 
 RUN pip install -r ./requirements.txt
 
