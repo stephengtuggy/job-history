@@ -26,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = env('JOB_HISTORY_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('JOB_HISTORY_DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '0.0.0.0', '[::]']
 
 
 # Application definition
@@ -79,11 +79,12 @@ WSGI_APPLICATION = 'jobHistorySite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'jobHistoryDB',
-        'USER': 'stephengtuggy',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE':   'django.db.backends.postgresql',
+        'NAME':     env('JOB_HISTORY_DB_NAME'),
+        'USER':     env('JOB_HISTORY_DB_USERNAME'),
+        'PASSWORD': env('JOB_HISTORY_DB_PASSWORD'),
+        'HOST':     env('JOB_HISTORY_DB_HOST'),
+        'PORT':     env('JOB_HISTORY_DB_PORT'),
     }
 }
 
