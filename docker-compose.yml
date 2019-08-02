@@ -11,6 +11,8 @@ services:
   db:
     image:
       postgres:10
+    container_name:
+      job_history_db
     env_file:
       ./.env
     volumes:

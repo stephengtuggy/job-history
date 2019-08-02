@@ -14,4 +14,4 @@ RUN chmod u+x docker-entrypoint.sh
 RUN chmod u+x tcp-port-wait.sh
 RUN chmod u+x manage.py
 
-ENTRYPOINT [ "docker-entrypoint.sh" ]
+ENTRYPOINT [ "./docker-entrypoint.sh" ]

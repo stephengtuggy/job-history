@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./tcp-port-wait.sh $JOB_HISTORY_DB_HOST $JOB_HISTORY_DB_PORT
+./tcp-port-wait.sh 0.0.0.0 $JOB_HISTORY_DB_PORT
 
 # if [ -f "backup_to_restore.sql" ]
 

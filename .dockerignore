@@ -52,3 +52,6 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
+.DS_Store
+.vscode/
+**/public/
