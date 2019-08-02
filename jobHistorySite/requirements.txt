@@ -1,5 +1,6 @@
 Django>=2.2.4,<2.3
 django-environ>=0.4.5,<0.5
+psycopg2-binary>=2.8.3,<2.9
 
 astroid>=2.2.5,<2.3
 colorama>=0.4.1,<0.5
