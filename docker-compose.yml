@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  web:
+    build: ./jobHistorySite
+    env_file:
+      ./.env
+    depends_on:
+      - db
+    networks:
+      - job_history_net_1
+  db:
+    image:
+      postgres:10
+    env_file:
+      ./.env
+    volumes:
+      - "pg_data:/var/lib/postgresql/data"
+    ports:
+      - "${JOB_HISTORY_DB_PORT}:5432"
+    networks:
+      - job_history_net_1
+
+networks:
+  job_history_net_1:
+
+volumes:
+  pg_data:
