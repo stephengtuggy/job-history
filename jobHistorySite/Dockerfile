@@ -1,6 +1,5 @@
 FROM python:3.7-stretch
 
-COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 RUN apt-get -y update
@@ -8,7 +7,10 @@ RUN apt-get -y update
 RUN apt-get -y install netcat postgresql-client
 RUN apt-get -y dist-upgrade
 
+COPY ./requirements.txt /usr/src/app
 RUN pip install -r ./requirements.txt
+
+COPY . /usr/src/app
 
 RUN chmod u+x docker-entrypoint.sh
 RUN chmod u+x tcp-port-wait.sh
