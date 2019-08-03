@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 RUN apt-get -y update
 # Used by tcp-port-wait.sh
-RUN apt-get -y install netcat
+RUN apt-get -y install netcat postgresql-client
 RUN apt-get -y dist-upgrade
 
 RUN pip install -r ./requirements.txt
