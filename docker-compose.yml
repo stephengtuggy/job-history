@@ -7,13 +7,15 @@ services:
     env_file:
       ./.env
     command:
-      ./manage.py runserver 0.0.0.0:8000
+      /usr/src/app/manage.py runserver 0.0.0.0:8000
     depends_on:
       - db
     ports:
       - "8000:8000"
     networks:
       - job_history_net_1
+    restart:
+      "no"
   db:
     image:
       postgres:10
@@ -27,6 +29,8 @@ services:
       - "5432:5432"
     networks:
       - job_history_net_1
+    restart:
+      "no"
 
 networks:
   job_history_net_1:
