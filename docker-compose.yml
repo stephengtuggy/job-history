@@ -2,10 +2,14 @@ version: "3.7"
 services:
   web:
     build: ./jobHistorySite
+    container_name:
+      job_history_web
     env_file:
       ./.env
     depends_on:
       - db
+    ports:
+      - "8000:8000"
     networks:
       - job_history_net_1
   db:
