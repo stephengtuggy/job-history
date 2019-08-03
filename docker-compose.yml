@@ -6,6 +6,8 @@ services:
       job_history_web
     env_file:
       ./.env
+    command:
+      ./manage.py runserver 0.0.0.0:8000
     depends_on:
       - db
     ports:
