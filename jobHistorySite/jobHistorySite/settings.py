@@ -28,8 +28,9 @@ SECRET_KEY = env('JOB_HISTORY_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('JOB_HISTORY_DEBUG')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '0.0.0.0', '[::]']
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '[::]']
+if env('JOB_HISTORY_ALLOWED_HOSTS'):
+    ALLOWED_HOSTS += env('JOB_HISTORY_ALLOWED_HOSTS').split(',')
 
 # Application definition
 
