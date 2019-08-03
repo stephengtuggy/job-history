@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+import environ
+env = environ.Env()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,12 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9_)_7=d9q-vn0(9^g=aj^$^pa!709c*rqq%2b2nvp023nsa$38'
+SECRET_KEY = env('JOB_HISTORY_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('JOB_HISTORY_DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '0.0.0.0', '[::]']
 
 
 # Application definition
@@ -76,11 +79,12 @@ WSGI_APPLICATION = 'jobHistorySite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'jobHistoryDB',
-        'USER': 'stephengtuggy',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE':   'django.db.backends.postgresql',
+        'NAME':     env('JOB_HISTORY_DB_NAME'),
+        'USER':     env('JOB_HISTORY_DB_USERNAME'),
+        'PASSWORD': env('JOB_HISTORY_DB_PASSWORD'),
+        'HOST':     env('JOB_HISTORY_DB_HOST'),
+        'PORT':     env('JOB_HISTORY_DB_PORT'),
     }
 }
 
@@ -120,5 +124,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+STATICFILES_STORAGE='django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-STATIC_URL = '/static/'
+STATIC_URL = env('JOB_HISTORY_STATIC_URL')
+STATIC_ROOT = env('JOB_HISTORY_STATIC_ROOT')

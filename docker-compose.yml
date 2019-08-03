@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  web:
+    build: ./jobHistorySite
+    container_name:
+      job_history_web
+    env_file:
+      ./.env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    networks:
+      - job_history_net_1
+  db:
+    image:
+      postgres:10
+    container_name:
+      job_history_db
+    env_file:
+      ./.env
+    volumes:
+      - "pg_data:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+    networks:
+      - job_history_net_1
+
+networks:
+  job_history_net_1:
+
+volumes:
+  pg_data:
