@@ -3,6 +3,9 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Employer(models.Model):
+    class Meta:
+        verbose_name = _('Employer')
+    
     short_name                          = models.CharField(max_length=50, unique=True, blank=False, null=False, verbose_name=_('Short Name'))
     long_name                           = models.CharField(max_length=254, unique=True, blank=False, null=True, verbose_name=_('Long Name'))
     industry                            = models.CharField(max_length=254, blank=True, null=False, verbose_name=_('Industry'))
@@ -22,6 +25,9 @@ class Employer(models.Model):
 
 
 class Position(models.Model):
+    class Meta:
+        verbose_name = _('Position')
+    
     employer                            = models.ForeignKey(Employer, on_delete=models.CASCADE, verbose_name=_('Employer'))
     title                               = models.CharField(max_length=200, blank=False, null=False, verbose_name=_('Title'))
     responsibilities                    = models.TextField(blank=True, null=False, verbose_name=_('Responsibilities'))
@@ -48,6 +54,9 @@ class Position(models.Model):
 
 
 class JobTimePeriod(models.Model):
+    class Meta:
+        verbose_name = _('Job Time Period')
+    
     position                            = models.ForeignKey(Position, on_delete=models.CASCADE, verbose_name=_('Position'))
     start_year                          = models.PositiveIntegerField(null=False, verbose_name=_('Start Year'))
     start_month                         = models.PositiveSmallIntegerField(null=True, verbose_name=_('Start Month'))
