@@ -50,7 +50,7 @@ class Position(models.Model):
     can_contact                         = models.BooleanField(null=False, verbose_name=_('Can Contact?'))
 
     def __str__(self):
-        return self.title + " @ " + self.employer.__str__()
+        return self.title + " @ " + str(self.employer)
 
 
 class JobTimePeriod(models.Model):
