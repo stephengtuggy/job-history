@@ -11,13 +11,13 @@ jobs:
       - checkout
       - run:
           name: Update Debian Package List
-          command: apt-get -y update
+          command: sudo apt-get -y update
       - run:
           name: Install Debian Packages
-          command: apt-get -y install netcat postgresql-client
-      - run:
-          name: Upgrade Debian Packages
-          command: apt-get -y dist-upgrade
+          command: sudo apt-get -y install netcat postgresql-client
+      # - run:
+      #     name: Upgrade Debian Packages
+      #     command: sudo apt-get -y dist-upgrade
       - run:
           name: Pip Install
           command: pip install -r ./requirements.txt
