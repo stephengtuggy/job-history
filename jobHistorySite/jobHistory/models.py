@@ -76,20 +76,20 @@ class JobTimePeriod(models.Model):
     work_country                        = models.CharField(max_length=200, blank=True, null=False, verbose_name=_('Work Country'))
 
     def __str__(self):
-        retVal = self.position.__str__()
+        retVal = str(self.position)
         retVal += " from "
-        retVal += self.start_year.__str__()
+        retVal += str(self.start_year)
         if self.start_month is not None:
-            retVal += "-" + self.start_month.__str__()
+            retVal += "-" + str(self.start_month)
             if self.start_day is not None:
-                retVal += "-" + self.start_day.__str__()
+                retVal += "-" + str(self.start_day)
         retVal += " to "
         if self.is_current_position:
             retVal += "present"
         else:
-            retVal += self.end_year.__str__()
+            retVal += str(self.end_year)
             if self.end_month is not None:
-                retVal += "-" + self.end_month.__str__()
+                retVal += "-" + str(self.end_month)
                 if self.end_day is not None:
-                    retVal += "-" + self.end_day.__str__()
+                    retVal += "-" + str(self.end_day)
         return retVal
