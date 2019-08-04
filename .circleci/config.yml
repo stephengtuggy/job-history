@@ -1,6 +1,6 @@
 version: '2'
 jobs:
-  build:
+  build_and_test:
     working_directory: ~/job-history-circleci
     docker:
       # The primary container is an instance of the first image listed. The job's commands run in this container.
@@ -30,20 +30,11 @@ jobs:
       - run:
           name: Make sure manage.py is executable
           command: chmod u+x app/manage.py
-  test:
-    working_directory:
-      ~/job-history-circleci/app
-    docker:
-      - image: circleci/python:3.7-stretch
-      - image: circleci/postgres:10
-    steps:
-      - checkout
       - run:
           name: Run the actual tests
-          command: ./docker-entrypoint.sh "./manage.py test"
+          command: ./app/docker-entrypoint.sh "./manage.py test"
 workflows:
   version: 2
   on_push:
     jobs:
-      - build
-      - test
+      - build_and_test
