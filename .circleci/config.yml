@@ -41,3 +41,8 @@ jobs:
       - run:
           name: Run the actual tests
           command: ./docker-entrypoint.sh "./manage.py test"
+workflows:
+  version: '2'
+  on_push:
+    jobs:
+      - test
