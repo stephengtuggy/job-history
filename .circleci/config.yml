@@ -20,17 +20,19 @@ jobs:
       #     command: sudo apt-get -y dist-upgrade
       - run:
           name: Pip Install
-          command: pip install -r ./requirements.txt
+          command: pip install -r ./app/requirements.txt
       - run:
           name: Make sure docker-entrypoint.sh is executable
-          command: chmod u+x docker-entrypoint.sh
+          command: chmod u+x app/docker-entrypoint.sh
       - run:
           name: Make sure tcp-port-wait.sh is executable
-          command: chmod u+x tcp-port-wait.sh
+          command: chmod u+x app/tcp-port-wait.sh
       - run:
           name: Make sure manage.py is executable
-          command: chmod u+x manage.py
+          command: chmod u+x app/manage.py
   test:
+    working_directory:
+      ~/job-history-circleci/app
     docker:
       - image: circleci/python:3.7-stretch
       - image: circleci/postgres:10
