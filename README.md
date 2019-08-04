@@ -8,11 +8,11 @@ This is a web app that lets you enter info about your current and past jobs into
 
 This app runs in `Docker`. You will need both Docker and Docker Compose to build and run it. On macOS and Windows, the easiest way to get these products is to download and install Docker Desktop Community Edition.
 
-Also, you will need a copy of a file called `.env`. Ask me for this file, and I can send you one, via a more secure channel than GitHub. Place this file in the `jobHistorySite` folder just off the root of your local working copy of this repo.
+Also, you will need a copy of a file called `.env`. Ask me for this file, and I can send you one, via a more secure channel than GitHub. Place this file in the `app` folder just off the root of your local working copy of this repo.
 
 Once you have these items in place, run the command `docker-compose up --build`, either in PowerShell on Windows, or in Terminal on macOS or Linux. You should see Docker Compose pulling the latest copy of each source docker image, then building the main image for this app, and finally, spinning up both containers.
 
-Assuming that this command completes successfully, you can now open your favorite web browser, and enter the URL: [http://localhost:8000/administrate](http://localhost:8000/administrate). Oh, wait. The first time you run this app, you will need to create a user account for yourself. To do so, open another PowerShell / Terminal window in the `jobHistorySite` folder, and run this sequence of commands, one at a time:
+Assuming that this command completes successfully, you can now open your favorite web browser, and enter the URL: [http://localhost:8000/administrate](http://localhost:8000/administrate). Oh, wait. The first time you run this app, you will need to create a user account for yourself. To do so, open another PowerShell / Terminal window in the `app` folder, and run this sequence of commands, one at a time:
 
 ```sh
 docker-compose exec web bash
