@@ -6,7 +6,7 @@ jobs:
       # The primary container is an instance of the first image listed. The job's commands run in this container.
       - image: circleci/python:3.7-stretch
       # The secondary container is an instance of the second listed image which is run in a common network where ports exposed on the primary container are available on localhost.
-      - image: circleci/postgis:10
+      - image: circleci/postgres:10
     steps:
       - checkout
       - run:
@@ -33,7 +33,7 @@ jobs:
   test:
     docker:
       - image: circleci/python:3.7-stretch
-      - image: circleci/postgis:10
+      - image: circleci/postgres:10
     steps:
       - checkout
       - run:
