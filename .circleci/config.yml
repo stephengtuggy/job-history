@@ -45,4 +45,5 @@ workflows:
   version: 2
   on_push:
     jobs:
+      - build
       - test
