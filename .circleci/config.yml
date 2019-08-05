@@ -11,7 +11,8 @@ jobs:
         name: job_history_db
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          docker_layer_caching: false
       - run:
           name: Update Debian Package List
           command: sudo apt-get -y update
@@ -44,7 +45,8 @@ jobs:
         name: job_history_db
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          docker_layer_caching: false
       - run: |
           pwd && ./docker-entrypoint.sh ./manage.py test
 workflows:
