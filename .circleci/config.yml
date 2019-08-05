@@ -16,13 +16,13 @@ jobs:
           command: sudo apt-get -y update
       - run:
           name: Install Debian Packages
-          command: sudo apt-get -y install netcat postgresql-client
+          command: sudo apt-get -y install netcat postgresql-client libgdal-dev
       # - run:
       #     name: Upgrade Debian Packages
       #     command: sudo apt-get -y dist-upgrade
       - run:
           name: Pip Install
-          command: cd app/ && pip install --user -r ./requirements.txt
+          command: sudo pip install -r ./app/requirements.txt
       - run:
           name: Make sure docker-entrypoint.sh is executable
           command: chmod u+x app/docker-entrypoint.sh
