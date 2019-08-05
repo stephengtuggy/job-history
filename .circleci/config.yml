@@ -32,9 +32,6 @@ jobs:
       - run:
           name: Make sure manage.py is executable
           command: chmod u+x app/manage.py
-      - run:
-          name: Run the actual tests
-          command: cd ./app && ./docker-entrypoint.sh ./manage.py test
   test:
     working_directory: ~/job-history-circleci/app
     docker:
