@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 ./tcp-port-wait.sh $JOB_HISTORY_DB_HOST $JOB_HISTORY_DB_PORT
 
