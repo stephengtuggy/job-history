@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Make sure manage.py is executable
           command: chmod u+x app/manage.py
-      - run: |
+      - run:
           name: Actually run the tests
           command: cd app/ && ./docker-entrypoint.sh ./manage.py test
 workflows:
