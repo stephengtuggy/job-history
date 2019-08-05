@@ -1,6 +1,6 @@
 version: '2'
 jobs:
-  build_and_test:
+  build:
     working_directory: ~/job-history-circleci
     docker:
       # The primary container is an instance of the first image listed. The job's commands run in this container.
@@ -35,8 +35,25 @@ jobs:
       - run:
           name: Run the actual tests
           command: cd ./app && ./docker-entrypoint.sh ./manage.py test
+  test:
+    working_directory: ~/job-history-circleci/app
+    docker:
+      # The primary container is an instance of the first image listed. The job's commands run in this container.
+      - image: circleci/python:3.7-buster
+        name: job_history_web
+      # The secondary container is an instance of the second listed image which is run in a common network where ports exposed on the primary container are available on localhost.
+      - image: postgres:11
+        name: job_history_db
+    steps:
+      - checkout
+      - run:
+          name: Run the actual tests
+          command: ./docker-entrypoint.sh ./manage.py test
 workflows:
   version: 2
   on_push:
     jobs:
-      - build_and_test
+      - build
+      - test:
+          requires:
+            - build
