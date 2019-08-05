@@ -12,7 +12,7 @@ jobs:
           JOB_HISTORY_ALLOWED_HOSTS: 0.0.0.0
           JOB_HISTORY_DB_NAME: job_history
           JOB_HISTORY_DB_USERNAME: postgres
-          JOB_HISTORY_DB_PASSWORD: "eF*aysdjKG#kv\-f._BDF-Uf_piawa?H5=d-uG[%,.66F=HP9?,;[P/"
+          JOB_HISTORY_DB_PASSWORD: yR*TBPaYpB@68bQ=@m;nzsE(wi*C})zZA4pT]XLkBVV6TT*tkG;QFor
           JOB_HISTORY_DB_HOST: job_history_db
           JOB_HISTORY_DB_PORT: 5432
           JOB_HISTORY_STATIC_ROOT: /usr/src/app/public/static/
@@ -22,7 +22,7 @@ jobs:
         name: job_history_db
         environment:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: "eF*aysdjKG#kv\-f._BDF-Uf_piawa?H5=d-uG[%,.66F=HP9?,;[P/"
+          POSTGRES_PASSWORD: yR*TBPaYpB@68bQ=@m;nzsE(wi*C})zZA4pT]XLkBVV6TT*tkG;QFor
           POSTGRES_DB: job_history
     steps:
       - checkout
