@@ -22,7 +22,7 @@ jobs:
       #     command: sudo apt-get -y dist-upgrade
       - run:
           name: Pip Install
-          command: pip install --user -r ./app/requirements.txt
+          command: sudo pip install -r ./app/requirements.txt
       - run:
           name: Make sure docker-entrypoint.sh is executable
           command: chmod u+x app/docker-entrypoint.sh
