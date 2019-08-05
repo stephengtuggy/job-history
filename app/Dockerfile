@@ -1,9 +1,9 @@
-FROM python:3.7-stretch
+FROM python:3.7-buster
 
 WORKDIR /usr/src/app
 
 RUN apt-get -y update
-# Used by tcp-port-wait.sh
+# Netcat is used by tcp-port-wait.sh
 RUN apt-get -y install netcat postgresql-client
 RUN apt-get -y dist-upgrade
 

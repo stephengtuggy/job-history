@@ -1,0 +1,40 @@
+version: '2'
+jobs:
+  build_and_test:
+    working_directory: ~/job-history-circleci
+    docker:
+      # The primary container is an instance of the first image listed. The job's commands run in this container.
+      - image: circleci/python:3.7-buster
+      # The secondary container is an instance of the second listed image which is run in a common network where ports exposed on the primary container are available on localhost.
+      - image: postgres:11
+    steps:
+      - checkout
+      - run:
+          name: Update Debian Package List
+          command: sudo apt-get -y update
+      - run:
+          name: Install Debian Packages
+          command: sudo apt-get -y install netcat postgresql-client
+      # - run:
+      #     name: Upgrade Debian Packages
+      #     command: sudo apt-get -y dist-upgrade
+      - run:
+          name: Pip Install
+          command: pip install --user -r ./app/requirements.txt
+      - run:
+          name: Make sure docker-entrypoint.sh is executable
+          command: chmod u+x app/docker-entrypoint.sh
+      - run:
+          name: Make sure tcp-port-wait.sh is executable
+          command: chmod u+x app/tcp-port-wait.sh
+      - run:
+          name: Make sure manage.py is executable
+          command: chmod u+x app/manage.py
+      - run:
+          name: Run the actual tests
+          command: cd ./app && ./docker-entrypoint.sh ./manage.py test
+workflows:
+  version: 2
+  on_push:
+    jobs:
+      - build_and_test
