@@ -7,12 +7,10 @@ jobs:
       - image: circleci/python:3.7-buster
         name: job_history_web
       # The secondary container is an instance of the second listed image which is run in a common network where ports exposed on the primary container are available on localhost.
-      - image: postgres:11
+      - image: mdillon/postgis:11
         name: job_history_db
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: false
       - run:
           name: Update Debian Package List
           command: sudo apt-get -y update
@@ -41,12 +39,10 @@ jobs:
       - image: circleci/python:3.7-buster
         name: job_history_web
       # The secondary container is an instance of the second listed image which is run in a common network where ports exposed on the primary container are available on localhost.
-      - image: postgres:11
+      - image: mdillon/postgis:11
         name: job_history_db
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: false
       - run: |
           pwd && ./docker-entrypoint.sh ./manage.py test
 workflows:

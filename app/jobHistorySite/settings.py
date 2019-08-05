@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'jobHistorySite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE':   'django.db.backends.postgresql',
+        'ENGINE':   'django.contrib.gis.db.backends.postgis',
         'NAME':     env('JOB_HISTORY_DB_NAME'),
         'USER':     env('JOB_HISTORY_DB_USERNAME'),
         'PASSWORD': env('JOB_HISTORY_DB_PASSWORD'),

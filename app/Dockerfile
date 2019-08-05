@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 RUN apt-get -y update
 # Netcat is used by tcp-port-wait.sh
-RUN apt-get -y install netcat postgresql-client
+RUN apt-get -y install netcat postgresql-client libgdal-dev
 RUN apt-get -y dist-upgrade
 
 COPY ./requirements.txt /usr/src/app
