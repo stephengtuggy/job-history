@@ -6,7 +6,7 @@ jobs:
       # The primary container is an instance of the first image listed. The job's commands run in this container.
       - image: circleci/python:3.7-buster
       # The secondary container is an instance of the second listed image which is run in a common network where ports exposed on the primary container are available on localhost.
-      - image: circleci/postgres:11
+      - image: postgres:11
     steps:
       - checkout
       - run:
@@ -32,7 +32,7 @@ jobs:
           command: chmod u+x app/manage.py
       - run: |
           cd ./app
-          ./docker-entrypoint.sh "./manage.py test"
+          ./docker-entrypoint.sh ./manage.py test
 workflows:
   version: 2
   on_push:
