@@ -1,6 +1,8 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
+*.pyc
+*.pyd
+*.pyo
 *$py.class
 
 # C extensions
@@ -105,3 +107,5 @@ venv.bak/
 
 .DS_Store
 .vscode/
+**/public/
+*.sql
