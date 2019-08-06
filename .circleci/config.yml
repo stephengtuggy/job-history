@@ -16,7 +16,7 @@ jobs:
           JOB_HISTORY_DB_HOST: job_history_db
           JOB_HISTORY_DB_PORT: 5432
           JOB_HISTORY_STATIC_ROOT: /home/circleci/job-history-circleci/app/public/static/
-          JOB_HISTORY_STATIC_URL: /static/
+          JOB_HISTORY_STATIC_URL: /public/static/
       # The secondary container is an instance of the second listed image which is run in a common network where ports exposed on the primary container are available on localhost.
       - image: mdillon/postgis:11
         name: job_history_db

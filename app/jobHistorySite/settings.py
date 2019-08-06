@@ -13,7 +13,18 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 import environ
-env = environ.Env()
+env = environ.Env(
+    JOB_HISTORY_SECRET_KEY=str,
+    JOB_HISTORY_DEBUG=bool,
+    JOB_HISTORY_ALLOWED_HOSTS=list,
+    JOB_HISTORY_DB_NAME=str,
+    JOB_HISTORY_DB_USERNAME=str,
+    JOB_HISTORY_DB_PASSWORD=str,
+    JOB_HISTORY_DB_HOST=str,
+    JOB_HISTORY_DB_PORT=int,
+    JOB_HISTORY_STATIC_URL=str,
+    JOB_HISTORY_STATIC_ROOT=str
+    )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,11 +41,12 @@ DEBUG = env('JOB_HISTORY_DEBUG')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '[::]']
 if env('JOB_HISTORY_ALLOWED_HOSTS'):
-    ALLOWED_HOSTS += env('JOB_HISTORY_ALLOWED_HOSTS').split(',')
+    ALLOWED_HOSTS += env('JOB_HISTORY_ALLOWED_HOSTS')
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -125,7 +138,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-STATICFILES_STORAGE='django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = env('JOB_HISTORY_STATIC_URL')
 STATIC_ROOT = env('JOB_HISTORY_STATIC_ROOT')
