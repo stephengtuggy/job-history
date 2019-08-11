@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+from django.urls import reverse_lazy
+
 import environ
 env = environ.Env(
     JOB_HISTORY_SECRET_KEY=str,
@@ -72,7 +74,9 @@ ROOT_URLCONF = 'jobHistorySite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,3 +146,5 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = env('JOB_HISTORY_STATIC_URL')
 STATIC_ROOT = env('JOB_HISTORY_STATIC_ROOT')
+
+LOGIN_URL = reverse_lazy('login')
