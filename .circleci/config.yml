@@ -12,8 +12,6 @@ jobs:
       - run: |
           mv docker-compose.circleci.yml docker-compose.yml
       - run: |
-          set
-      - run: |
           docker-compose up --build --exit-code-from web --abort-on-container-exit
 workflows:
   version: 2
