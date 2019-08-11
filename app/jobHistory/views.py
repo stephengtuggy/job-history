@@ -1,3 +1,5 @@
+import operator
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import generic
@@ -10,4 +12,5 @@ class IndexView(LoginRequiredMixin, generic.ListView):
     context_object_name = 'chronological_job_list'
 
     def get_queryset(self):
-        return JobTimePeriod.objects.order_by('-end_year','-end_month','-end_day')
+        job_time_periods = JobTimePeriod.objects.all()
+        return sorted(job_time_periods, key=operator.attrgetter('endDate'), reverse=True)

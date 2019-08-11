@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -5,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 class Employer(models.Model):
     class Meta:
         verbose_name = _('Employer')
-    
+
     short_name                          = models.CharField(max_length=50, unique=True, blank=False, null=False, verbose_name=_('Short Name'))
     long_name                           = models.CharField(max_length=254, unique=True, blank=False, null=True, verbose_name=_('Long Name'))
     industry                            = models.CharField(max_length=254, blank=True, null=False, verbose_name=_('Industry'))
@@ -27,7 +29,7 @@ class Employer(models.Model):
 class Position(models.Model):
     class Meta:
         verbose_name = _('Position')
-    
+
     employer                            = models.ForeignKey(Employer, on_delete=models.CASCADE, verbose_name=_('Employer'))
     title                               = models.CharField(max_length=200, blank=False, null=False, verbose_name=_('Title'))
     responsibilities                    = models.TextField(blank=True, null=False, verbose_name=_('Responsibilities'))
@@ -56,7 +58,7 @@ class Position(models.Model):
 class JobTimePeriod(models.Model):
     class Meta:
         verbose_name = _('Job Time Period')
-    
+
     position                            = models.ForeignKey(Position, on_delete=models.CASCADE, verbose_name=_('Position'))
     start_year                          = models.PositiveIntegerField(null=False, verbose_name=_('Start Year'))
     start_month                         = models.PositiveSmallIntegerField(null=True, verbose_name=_('Start Month'))
@@ -75,21 +77,24 @@ class JobTimePeriod(models.Model):
     work_zip_or_postal_code             = models.CharField(max_length=50, blank=True, null=False, verbose_name=_('Work Zip Code or Postal Code'))
     work_country                        = models.CharField(max_length=200, blank=True, null=False, verbose_name=_('Work Country'))
 
-    def __str__(self):
-        retVal = str(self.position)
-        retVal += " from "
-        retVal += str(self.start_year)
-        if self.start_month is not None:
-            retVal += "-" + str(self.start_month)
-            if self.start_day is not None:
-                retVal += "-" + str(self.start_day)
-        retVal += " to "
+    @property
+    def startDate(self):
+        return datetime.date(self.start_year, self.start_month, self.start_day)
+
+    @property
+    def endDate(self):
         if self.is_current_position:
-            retVal += "present"
+            return datetime.date.today()
         else:
-            retVal += str(self.end_year)
-            if self.end_month is not None:
-                retVal += "-" + str(self.end_month)
-                if self.end_day is not None:
-                    retVal += "-" + str(self.end_day)
-        return retVal
+            return datetime.date(self.end_year, self.end_month, self.end_day)
+
+    def __str__(self):
+        ret_val = str(self.position)
+        ret_val += " from "
+        ret_val += str(self.startDate)
+        ret_val += " to "
+        if self.is_current_position:
+            ret_val += "present"
+        else:
+            ret_val += str(self.endDate)
+        return ret_val
