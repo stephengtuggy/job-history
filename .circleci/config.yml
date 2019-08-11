@@ -8,7 +8,7 @@ jobs:
       - run: |
           sudo pip install --upgrade pip
       - run: |
-          sudo pip install --upgrade docker-compose
+          sudo pip install docker-compose
       - run: |
           mv docker-compose.circleci.yml docker-compose.yml
       - run: |
