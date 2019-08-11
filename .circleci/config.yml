@@ -4,7 +4,6 @@ jobs:
     machine: true
     working_directory: ~/job-history-circleci
     steps:
-      - setup_remote_docker
       - checkout
       - run: |
           mv docker-compose.circleci.yml docker-compose.yml
