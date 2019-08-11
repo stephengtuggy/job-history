@@ -1,0 +1,9 @@
+{% extends "base/base.html" %}
+
+{% block title %}Your Job History{% endblock %}
+
+{% block content %}
+    {% for job_time_period in chronological_job_list %}
+        <p>{{ job_time_period }}</p>
+    {% endfor %}
+{% endblock %}
