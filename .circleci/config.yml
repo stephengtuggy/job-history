@@ -8,8 +8,6 @@ jobs:
       - run: |
           sudo apt-get install python3
       - run: |
-          sudo apt-get install python3-gpg
-      - run: |
           sudo apt-get install python3-pip
       - run: |
           pip3 install docker-compose
