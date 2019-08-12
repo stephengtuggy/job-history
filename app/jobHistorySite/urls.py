@@ -18,8 +18,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, include, reverse_lazy
 
 urlpatterns = [
-    path('administrate/', admin.site.urls, name='admin'),
-    path('registration/login/', LoginView.as_view(), {'template_name': 'registration/login.html'}, name='login'),
-    path('registration/logout', LogoutView.as_view(), name='logout'),
-    path('', include('jobHistory.urls'), name='jobHistory'),
+    path('administrate/', admin.site.urls),
+    path('registration/', include('django.contrib.auth.urls')),
+    path('jobHistory/', include('jobHistory.urls')),
 ]
