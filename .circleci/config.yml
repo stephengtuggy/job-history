@@ -1,55 +1,18 @@
 version: '2'
 jobs:
   build_and_test:
+    machine: true
     working_directory: ~/job-history-circleci
-    docker:
-      # The primary container is an instance of the first image listed. The job's commands run in this container.
-      - image: circleci/python:3.7-buster
-        name: job_history_web
-        environment:
-          JOB_HISTORY_SECRET_KEY: xoB:hNW?ap`A8{RA2]Kips%5)<-_H2-,d/pn@*e:SczdrY!\dzt4#mG
-          JOB_HISTORY_DEBUG: True
-          JOB_HISTORY_ALLOWED_HOSTS: 0.0.0.0
-          JOB_HISTORY_DB_NAME: job_history
-          JOB_HISTORY_DB_USERNAME: postgres
-          JOB_HISTORY_DB_PASSWORD: yR*TBPaYpB@68bQ=@m;nzsE(wi*C})zZA4pT]XLkBVV6TT*tkG;QFor
-          JOB_HISTORY_DB_HOST: job_history_db
-          JOB_HISTORY_DB_PORT: 5432
-          JOB_HISTORY_STATIC_ROOT: /home/circleci/job-history-circleci/app/public/static/
-          JOB_HISTORY_STATIC_URL: /static/
-      # The secondary container is an instance of the second listed image which is run in a common network where ports exposed on the primary container are available on localhost.
-      - image: mdillon/postgis:11
-        name: job_history_db
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: yR*TBPaYpB@68bQ=@m;nzsE(wi*C})zZA4pT]XLkBVV6TT*tkG;QFor
-          POSTGRES_DB: job_history
     steps:
       - checkout
-      - run:
-          name: Update Debian Package List
-          command: sudo apt-get -y update
-      - run:
-          name: Install Debian Packages
-          command: sudo apt-get -y install netcat postgresql-client libgdal-dev
-      # - run:
-      #     name: Upgrade Debian Packages
-      #     command: sudo apt-get -y dist-upgrade
-      - run:
-          name: Pip Install
-          command: sudo pip install -r ./app/requirements.txt
-      - run:
-          name: Make sure docker-entrypoint.sh is executable
-          command: chmod u+x app/docker-entrypoint.sh
-      - run:
-          name: Make sure tcp-port-wait.sh is executable
-          command: chmod u+x app/tcp-port-wait.sh
-      - run:
-          name: Make sure manage.py is executable
-          command: chmod u+x app/manage.py
-      - run:
-          name: Actually run the tests
-          command: cd app/ && ./docker-entrypoint.sh ./manage.py test
+      - run: |
+          curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o ~/docker-compose
+          chmod +x ~/docker-compose
+          sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - run: |
+          mv docker-compose.circleci.yml docker-compose.yml
+      - run: |
+          docker-compose up --build --exit-code-from web --abort-on-container-exit
 workflows:
   version: 2
   on_push:
