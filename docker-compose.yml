@@ -8,12 +8,35 @@ services:
       ./.env
     command:
       /usr/src/app/manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
     ports:
       - "8000:8000"
     networks:
       - job_history_net_1
+      - job_history_internal_net
+    restart:
+      "no"
+  db:
+    image:
+      mdillon/postgis:11
+    container_name:
+      job_history_db
+    env_file:
+      ./.env
+    volumes:
+      - "pg_data:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+    networks:
+      - job_history_internal_net
     restart:
       "no"
 
 networks:
   job_history_net_1:
+  job_history_internal_net:
+    internal: true
+
+volumes:
+  pg_data:
