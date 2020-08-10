@@ -1,5 +1,7 @@
 # job-history
 
+[![stephengtuggy](https://circleci.com/gh/stephengtuggy/job-history.svg?style=shield)](https://circleci.com/gh/stephengtuggy/job-history)
+
 ## Overview
 
 This is a web app that lets you enter info about your current and past jobs into a database. You can then view this info later on, when you need to fill out a job application. This way, you won't have to remember everything every time. And you can refine the wording on, for example, your "Contributions and Accomplishments" section over time.
