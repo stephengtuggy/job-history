@@ -8,6 +8,7 @@ class JobTimePeriodInline(admin.TabularInline):
 
 
 class PositionAdmin(admin.ModelAdmin):
+    model = Position
     inlines = [JobTimePeriodInline]
 
 
