@@ -1,5 +1,7 @@
 import datetime
 
+from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -68,12 +70,12 @@ class JobTimePeriod(models.Model):
 
     position                            = models.ForeignKey(Position, on_delete=models.CASCADE, verbose_name=_('Position'))
     start_year                          = models.PositiveIntegerField(blank=False, null=False, verbose_name=_('Start Year'))
-    start_month                         = models.PositiveSmallIntegerField(blank=True, null=True, verbose_name=_('Start Month'))
-    start_day                           = models.PositiveSmallIntegerField(blank=True, null=True, verbose_name=_('Start Day'))
+    start_month                         = models.PositiveSmallIntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)], verbose_name=_('Start Month'))
+    start_day                           = models.PositiveSmallIntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)], verbose_name=_('Start Day'))
     is_current_position                 = models.BooleanField(blank=False, null=False, default=True, verbose_name=_('Current Position?'))
     end_year                            = models.PositiveIntegerField(blank=True, null=True, verbose_name=_('End Year'))
-    end_month                           = models.PositiveSmallIntegerField(blank=True, null=True, verbose_name=_('End Month'))
-    end_day                             = models.PositiveSmallIntegerField(blank=True, null=True, verbose_name=_('End Day'))
+    end_month                           = models.PositiveSmallIntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)], verbose_name=_('End Month'))
+    end_day                             = models.PositiveSmallIntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)], verbose_name=_('End Day'))
     starting_pay                        = models.CharField(max_length=50, blank=False, null=False, verbose_name=_('Starting Pay'))
     ending_pay                          = models.CharField(max_length=50, blank=False, null=False, verbose_name=_('Ending Pay'))
     hours_per_week                      = models.PositiveSmallIntegerField(blank=True, null=True, verbose_name=_('Hours per Week'))
@@ -98,10 +100,28 @@ class JobTimePeriod(models.Model):
     def __str__(self):
         ret_val = str(self.position)
         ret_val += " from "
-        ret_val += str(self.startDate)
+        try:
+            ret_val += str(self.startDate)
+        except ValueError as e:
+            ret_val += '<Invalid start date value>'
         ret_val += " to "
         if self.is_current_position:
             ret_val += "present"
         else:
-            ret_val += str(self.endDate)
+            try:
+                ret_val += str(self.endDate)
+            except ValueError as e:
+                ret_val += '<Invalid end date value>'
         return ret_val
+
+    def clean(self):
+        if self.is_current_position and self.end_year is not None:
+            raise ValidationError(_('Leave end date blank if this is your current position'))
+        elif self.end_year is None and not self.is_current_position:
+            raise ValidationError(_('End date (at least end year) is required if this is not your current position'))
+        elif self.start_month is None and self.start_day is not None:
+            raise ValidationError(_('Start month is required if start day is specified'))
+        elif self.end_year is None and (self.end_month is not None or self.end_day is not None):
+            raise ValidationError(_('End year is required if end month or end day is specified'))
+        elif self.end_month is None and self.end_day is not None:
+            raise ValidationError(_('End month is required if end day is specified'))
