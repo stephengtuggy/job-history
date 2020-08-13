@@ -148,3 +148,4 @@ STATIC_URL = env('JOB_HISTORY_STATIC_URL')
 STATIC_ROOT = env('JOB_HISTORY_STATIC_ROOT')
 
 LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('jobHistory:index')
