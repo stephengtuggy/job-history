@@ -1,0 +1,60 @@
+{% extends "base/base.html" %}
+
+{% block title %}Detail - {{ object }}{% endblock %}
+
+{% block content %}
+    <div id="job-time-period-detail">
+        <h1>{{ object }}</h1>
+        <p><strong>Title: </strong>{{ object.position.title }}</p>
+        <p><strong>Employer: </strong>{{ object.position.employer.long_name }}</p>
+        <p><strong>Current Position? </strong>{{ object.current_position|yesno }}</p>
+        <p><strong>Start Year: </strong>{{ object.start_year }}</p>
+        <p><strong>Start Month: </strong>{{ object.start_month }}</p>
+        <p><strong>Start Day: </strong>{{ object.start_day }}</p>
+        <p><strong>End Year: </strong>{{ object.end_year }}</p>
+        <p><strong>End Month: </strong>{{ object.end_month }}</p>
+        <p><strong>End Day: </strong>{{ object.end_day }}</p>
+        <p><strong>Position Responsibilities: </strong><br />
+                {{ object.position.responsibilities|linebreaksbr }}</p>
+        <p><strong>Contributions and Accomplishments in Position: </strong><br />
+                {{ object.position.contributions_and_accomplishments|linebreaksbr }}</p>
+        <p><strong>Contributions and Accomplishments During This Specific Time Period: </strong><br />
+                {{ object.contributions_and_accomplishments|linebreaksbr }}</p>
+        <p><strong>City Worked In: </strong>{{ object.work_city }}</p>
+        <p><strong>County/Parish: </strong>{{ object.work_county_or_parish }}</p>
+        <p><strong>State/Province: </strong>{{ object.work_state_or_province }}</p>
+        <p><strong>Zip/Postal Code: </strong>{{ object.work_zip_or_postal_code }}</p>
+        <p><strong>Country: </strong>{{ object.work_country }}</p>
+        <p><strong>Hours Per Week: </strong>{{ object.hours_per_week }}</p>
+        <p><strong>Starting Pay: </strong>{{ object.starting_pay }}</p>
+        <p><strong>Ending Pay: </strong>{{ object.ending_pay }}</p>
+        <p>&nbsp;</p>
+        <div id="supervisor-detail">
+            <h2>Supervisor</h2>
+            <div id="supervisor-name">
+                <h3>Supervisor Name</h3>
+                <p><strong>Prefix: </strong>{{ object.position.supervisor_name_prefix }}</p>
+                <p><strong>First/Given Name: </strong>{{ object.position.supervisor_given_name }}</p>
+                <p><strong>Middle: </strong>{{ object.position.supervisor_middle_name }}</p>
+                <p><strong>Last Name/Surname: </strong>{{ object.position.supervisor_surname }}</p>
+                <p><strong>Suffix: </strong>{{ object.position.supervisor_name_suffix }}</p>
+            </div>
+            <p>&nbsp;</p>
+            <p><strong>Phone: </strong>{{ object.position.supervisor_phone }}</p>
+            <p><strong>Email: </strong>{{ object.position.supervisor_email }}</p>
+            <div id="supervisor-address">
+                <h3>Supervisor Address</h3>
+                <p><strong>Address Line 1: </strong>{{ object.position.supervisor_addr1 }}</p>
+                <p><strong>Address Line 2: </strong>{{ object.position.supervisor_addr2 }}</p>
+                <p><strong>Address Line 3: </strong>{{ object.position.supervisor_addr3 }}</p>
+                <p><strong>City: </strong>{{ object.position.supervisor_city }}</p>
+                <p><strong>County/Parish: </strong>{{ object.position.supervisor_county_or_parish }}</p>
+                <p><strong>State/Province: </strong>{{ object.position.supervisor_state_or_province }}</p>
+                <p><strong>Zip/Postal Code: </strong>{{ object.position.supervisor_zip_or_postal_code }}</p>
+                <p><strong>Country: </strong>{{ object.position.supervisor_country }}</p>
+            </div>
+            <p>&nbsp;</p>
+            <p><strong>Can Contact? </strong>{{ object.position.can_contact|yesno }}</p>
+        </div>
+    </div>
+{% endblock %}

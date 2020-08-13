@@ -5,11 +5,13 @@
     </head>
     <body>
         <div id="header-block">
-            {% if user.is_authenticated %}
-                <p>Welcome, {{ user.username }}. <a href="{% url 'admin:index' %}">Enter data</a>. <a href="{% url 'jobHistory:index' %}">View job history</a>. <a href="{% url 'logout' %}">Log out</a>.</p>
-            {% else %}
-                <p>Please <a href="{% url 'login' %}">log in</a>.</p>
-            {% endif %}
+            <nav id="header-nav" class="header-nav">
+                {% if user.is_authenticated %}
+                    <p>Welcome, {{ user.username }}. <a href="{% url 'admin:index' %}">Enter data</a>. <a href="{% url 'jobHistory:index' %}">View job history</a>. <a href="{% url 'logout' %}">Log out</a>.</p>
+                {% else %}
+                    <p>Please <a href="{% url 'login' %}">log in</a>.</p>
+                {% endif %}
+            </nav>
         </div>
         <div id="content-block">
             {% block content %}
