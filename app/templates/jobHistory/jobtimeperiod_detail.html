@@ -1,0 +1,60 @@
+{% extends "base/base.html" %}
+
+{% block title %}Detail - {{ object }}{% endblock %}
+
+{% block content %}
+    <div id="job-time-period-detail">
+        <h1>{{ object }}</h1>
+        <p><span class="detail-label"><strong>Title: </strong></span><span class="detail-data">{{ object.position.title }}</span></p>
+        <p><span class="detail-label"><strong>Employer: </strong></span><span class="detail-data">{{ object.position.employer.long_name }}</span></p>
+        <p><span class="detail-label"><strong>Current Position? </strong></span><span class="detail-data">{{ object.current_position|yesno }}</span></p>
+        <p><span class="detail-label"><strong>Start Year: </strong></span><span class="detail-data">{{ object.start_year }}</span></p>
+        <p><span class="detail-label"><strong>Start Month: </strong></span><span class="detail-data">{{ object.start_month }}</span></p>
+        <p><span class="detail-label"><strong>Start Day: </strong></span><span class="detail-data">{{ object.start_day }}</span></p>
+        <p><span class="detail-label"><strong>End Year: </strong></span><span class="detail-data">{{ object.end_year }}</span></p>
+        <p><span class="detail-label"><strong>End Month: </strong></span><span class="detail-data">{{ object.end_month }}</span></p>
+        <p><span class="detail-label"><strong>End Day: </strong></span><span class="detail-data">{{ object.end_day }}</span></p>
+        <p><span class="detail-label"><strong>Position Responsibilities: </strong></span><span class="detail-data"><br />
+                {{ object.position.responsibilities|linebreaksbr }}</span></p>
+        <p><span class="detail-label"><strong>Contributions and Accomplishments in Position: </strong></span><span class="detail-data"><br />
+                {{ object.position.contributions_and_accomplishments|linebreaksbr }}</span></p>
+        <p><span class="detail-label"><strong>Contributions and Accomplishments During This Specific Time Period: </strong></span><span class="detail-data"><br />
+                {{ object.contributions_and_accomplishments|linebreaksbr }}</span></p>
+        <p><span class="detail-label"><strong>City Worked In: </strong></span><span class="detail-data">{{ object.work_city }}</span></p>
+        <p><span class="detail-label"><strong>County/Parish: </strong></span><span class="detail-data">{{ object.work_county_or_parish }}</span></p>
+        <p><span class="detail-label"><strong>State/Province: </strong></span><span class="detail-data">{{ object.work_state_or_province }}</span></p>
+        <p><span class="detail-label"><strong>Zip/Postal Code: </strong></span><span class="detail-data">{{ object.work_zip_or_postal_code }}</span></p>
+        <p><span class="detail-label"><strong>Country: </strong></span><span class="detail-data">{{ object.work_country }}</span></p>
+        <p><span class="detail-label"><strong>Hours Per Week: </strong></span><span class="detail-data">{{ object.hours_per_week }}</span></p>
+        <p><span class="detail-label"><strong>Starting Pay: </strong></span><span class="detail-data">{{ object.starting_pay }}</span></p>
+        <p><span class="detail-label"><strong>Ending Pay: </strong></span><span class="detail-data">{{ object.ending_pay }}</span></p>
+        <p>&nbsp;</p>
+        <div id="supervisor-detail">
+            <h2>Supervisor</h2>
+            <div id="supervisor-name">
+                <h3>Supervisor Name</h3>
+                <p><span class="detail-label"><strong>Prefix: </strong></span><span class="detail-data">{{ object.position.supervisor_name_prefix }}</span></p>
+                <p><span class="detail-label"><strong>First/Given Name: </strong></span><span class="detail-data">{{ object.position.supervisor_given_name }}</span></p>
+                <p><span class="detail-label"><strong>Middle: </strong></span><span class="detail-data">{{ object.position.supervisor_middle_name }}</span></p>
+                <p><span class="detail-label"><strong>Last Name/Surname: </strong></span><span class="detail-data">{{ object.position.supervisor_surname }}</span></p>
+                <p><span class="detail-label"><strong>Suffix: </strong></span><span class="detail-data">{{ object.position.supervisor_name_suffix }}</span></p>
+            </div>
+            <p>&nbsp;</p>
+            <p><span class="detail-label"><strong>Phone: </strong></span><span class="detail-data">{{ object.position.supervisor_phone }}</span></p>
+            <p><span class="detail-label"><strong>Email: </strong></span><span class="detail-data">{{ object.position.supervisor_email }}</span></p>
+            <div id="supervisor-address">
+                <h3>Supervisor Address</h3>
+                <p><span class="detail-label"><strong>Address Line 1: </strong></span><span class="detail-data">{{ object.position.supervisor_addr1 }}</span></p>
+                <p><span class="detail-label"><strong>Address Line 2: </strong></span><span class="detail-data">{{ object.position.supervisor_addr2 }}</span></p>
+                <p><span class="detail-label"><strong>Address Line 3: </strong></span><span class="detail-data">{{ object.position.supervisor_addr3 }}</span></p>
+                <p><span class="detail-label"><strong>City: </strong></span><span class="detail-data">{{ object.position.supervisor_city }}</span></p>
+                <p><span class="detail-label"><strong>County/Parish: </strong></span><span class="detail-data">{{ object.position.supervisor_county_or_parish }}</span></p>
+                <p><span class="detail-label"><strong>State/Province: </strong></span><span class="detail-data">{{ object.position.supervisor_state_or_province }}</span></p>
+                <p><span class="detail-label"><strong>Zip/Postal Code: </strong></span><span class="detail-data">{{ object.position.supervisor_zip_or_postal_code }}</span></p>
+                <p><span class="detail-label"><strong>Country: </strong></span><span class="detail-data">{{ object.position.supervisor_country }}</span></p>
+            </div>
+            <p>&nbsp;</p>
+            <p><span class="detail-label"><strong>Can Contact? </strong></span><span class="detail-data">{{ object.position.can_contact|yesno }}</span></p>
+        </div>
+    </div>
+{% endblock %}

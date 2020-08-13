@@ -3,7 +3,21 @@
 {% block title %}Your Job History{% endblock %}
 
 {% block content %}
-    {% for job_time_period in chronological_job_list %}
-        <p>{{ job_time_period }}</p>
-    {% endfor %}
+    <h1>Your Job History</h1>
+    <table>
+        <thead>
+            <tr><th>Title</th><th>Employer</th><th>From</th><th>To</th><th>Details</th></tr>
+        </thead>
+        <tbody>
+            {% for job_time_period in chronological_job_list %}
+                <tr>
+                    <td>{{ job_time_period.position.title }}</td>
+                    <td>{{ job_time_period.position.employer.long_name }}</td>
+                    <td>{{ job_time_period.startDate }}</td>
+                    <td>{{ job_time_period.endDate }}</td>
+                    <td><a href="{% url 'jobHistory:job-time-period-detail' job_time_period.pk %}">More...</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
