@@ -2,7 +2,6 @@ astroid==2.4.2
 colorama==0.4.3
 Django==2.2.15
 django-environ==0.4.5
-GDAL==2.4.0
 isort==4.3.21
 lazy-object-proxy==1.4.3
 mccabe==0.6.1
