@@ -9,6 +9,9 @@ from django.utils.translation import gettext_lazy as _
 class Employer(models.Model):
     class Meta:
         verbose_name = _('Employer')
+        constraints = [
+                        models.UniqueConstraint(fields=['short_name', ], name='employer_must_be_unique'),
+                      ]
 
     short_name                          = models.CharField(max_length=50, unique=True, blank=False, null=False, verbose_name=_('Short Name'))
     long_name                           = models.CharField(max_length=254, unique=True, blank=False, null=True, verbose_name=_('Long Name'))
@@ -31,6 +34,9 @@ class Employer(models.Model):
 class Position(models.Model):
     class Meta:
         verbose_name = _('Position')
+        constraints = [
+                        models.UniqueConstraint(fields=['employer', 'title', ], name='position_must_be_unique'),
+                      ]
 
     employer                            = models.ForeignKey(Employer, on_delete=models.CASCADE, verbose_name=_('Employer'))
     title                               = models.CharField(max_length=200, blank=False, null=False, verbose_name=_('Title'))
