@@ -72,8 +72,8 @@ class JobTimePeriod(models.Model):
                         models.CheckConstraint(check=(models.Q(start_month__isnull=False) | models.Q(start_day__isnull=True)), name='require_start_month_if_start_day_specified'),
                         models.CheckConstraint(check=(models.Q(end_year__isnull=False) | (models.Q(end_month__isnull=True) & models.Q(end_day__isnull=True))), name='require_end_year_if_end_month_specified'),
                         models.CheckConstraint(check=(models.Q(end_month__isnull=False) | models.Q(end_day__isnull=True)), name='require_end_month_if_end_day_specified'),
-                        models.UniqueConstraint(fields=['position', 'start_year', 'is_current_position'], name='job_time_period_must_be_unique_1'),
-                        models.UniqueConstraint(fields=['position', 'start_year', 'end_year'], condition=models.Q(is_current_position__exact=False), name='job_time_period_start_and_end_year_must_be_unique_if_not_current_position'),
+                        models.UniqueConstraint(fields=['position', 'start_year', 'start_month', 'start_day', 'is_current_position'], name='job_time_period_must_be_unique_A'),
+                        models.UniqueConstraint(fields=['position', 'start_year', 'start_month', 'start_day', 'end_year', 'end_month', 'end_day'], condition=models.Q(is_current_position__exact=False), name='job_time_period_start_and_end_date_must_be_unique_if_not_current_position'),
                        ]
 
     position                            = models.ForeignKey(Position, on_delete=models.CASCADE, verbose_name=_('Position'))

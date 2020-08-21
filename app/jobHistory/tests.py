@@ -40,13 +40,22 @@ class EmployerTestCase(TestCase):
         with self.assertRaises(IntegrityError):
             Position.objects.create(employer=emp, title="Position 5", supervisor_given_name="Jane", supervisor_surname="Doe", can_contact=False)
 
-    def test_creating_duplicate_job_time_periods(self):
+    def test_creating_duplicate_job_time_periods_A(self):
         Employer.objects.create(short_name="Employer6", long_name="Employer 6")
         emp = Employer.objects.get(short_name="Employer6")
         Position.objects.create(employer=emp, title="Position 6", supervisor_given_name="Billy Joe", supervisor_surname="Jim Bob", can_contact=True)
         position = Position.objects.get(employer=emp, title="Position 6")
-        JobTimePeriod.objects.create(position=position, start_year=2000, is_current_position=True, starting_pay="$10.00/hour", ending_pay="$17.00/hour")
+        JobTimePeriod.objects.create(position=position, start_year=2000, start_month=1, start_day=1, is_current_position=True, starting_pay="$10.00/hour", ending_pay="$17.00/hour")
         with self.assertRaises(IntegrityError):
-            JobTimePeriod.objects.create(position=position, start_year=2000, is_current_position=True, starting_pay="$10.00/hour", ending_pay="$17.00/hour")
+            JobTimePeriod.objects.create(position=position, start_year=2000, start_month=1, start_day=1, is_current_position=True, starting_pay="$10.00/hour", ending_pay="$17.00/hour")
+
+    def test_creating_duplicate_job_time_periods_B(self):
+        Employer.objects.create(short_name="Employer7", long_name="Employer 7")
+        emp = Employer.objects.get(short_name="Employer7")
+        Position.objects.create(employer=emp, title="Position 7", supervisor_given_name="Billy Joe", supervisor_surname="Jim Bob", can_contact=True)
+        position = Position.objects.get(employer=emp, title="Position 7")
+        JobTimePeriod.objects.create(position=position, start_year=2000, start_month=1, start_day=1, is_current_position=False, end_year=2019, end_month=12, end_day=31, starting_pay="$10.00/hour", ending_pay="$17.00/hour")
+        with self.assertRaises(IntegrityError):
+            JobTimePeriod.objects.create(position=position, start_year=2000, start_month=1, start_day=1, is_current_position=False, end_year=2019, end_month=12, end_day=31, starting_pay="$10.00/hour", ending_pay="$17.00/hour")
 
 
