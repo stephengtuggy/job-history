@@ -23,6 +23,7 @@ services:
       - "8000:8000"
     networks:
       - job_history_net_1
+      - job_history_internal_net
     restart:
       "no"
   db:
@@ -39,12 +40,14 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - job_history_net_1
+      - job_history_internal_net
     restart:
       "no"
 
 networks:
   job_history_net_1:
+  job_history_internal_net:
+    internal: true
 
 volumes:
   pg_data:
