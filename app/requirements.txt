@@ -11,5 +11,5 @@ pytz==2020.1
 six==1.15.0
 sqlparse==0.3.1
 typed-ast==1.4.1
-whitenoise==5.2.0
+whitenoise==5.3.0
 wrapt==1.12.1
