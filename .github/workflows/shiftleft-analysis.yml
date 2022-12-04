@@ -4,14 +4,21 @@
 name: SL Scan
 
 # This section configures the trigger for the workflow. Feel free to customize depending on your convention
-on: push
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
+  workflow_dispatch:
 
 jobs:
   Scan-Build:
     # Scan runs on ubuntu, mac and windows
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
     # Instructions
     # 1. Setup JDK, Node.js, Python etc depending on your project type
     # 2. Compile or build the project before invoking scan
@@ -19,7 +26,7 @@ jobs:
     # 3. Invoke Scan with the github token. Leave the workspace empty to use relative url
     
     - name: Set up Python 3.7
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@13ae5bb136fac2878aff31522b9efb785519f984
       with:
         python-version: '3.7' # Version range or exact version of a Python version to use, using SemVer's version range syntax
         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
@@ -27,10 +34,10 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade-strategy eager --upgrade pip
-        python -m pip install --upgrade-strategy eager --upgrade -r app/requirements.txt
+        python -m pip install --use-pep517 --upgrade -r app/requirements.txt
 
     - name: Perform Scan
-      uses: ShiftLeftSecurity/scan-action@master
+      uses: ShiftLeftSecurity/scan-action@54980bbdae434b8e7903cfcffa98a2601c207962
       env:
         WORKSPACE: ""
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -42,6 +49,6 @@ jobs:
         # type: python
 
     - name: Upload report
-      uses: github/codeql-action/upload-sarif@v1
+      uses: github/codeql-action/upload-sarif@aa0e650c6a3f17884f81106e54e207cc0f669aa2
       with:
         sarif_file: reports
