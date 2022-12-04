@@ -14,7 +14,7 @@ RUN python -m pip install --upgrade --upgrade-strategy eager pip
 
 RUN mkdir -p /usr/src/app
 COPY ./requirements.txt /usr/src/app
-RUN python -m pip install --upgrade --upgrade-strategy eager --use-feature=2020-resolver -r ./requirements.txt
+RUN python -m pip install --upgrade --upgrade-strategy eager -r ./requirements.txt
 
 COPY . /usr/src/app
 
