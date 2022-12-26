@@ -26,7 +26,7 @@ jobs:
     # 3. Invoke Scan with the github token. Leave the workspace empty to use relative url
     
     - name: Set up Python 3.7
-      uses: actions/setup-python@2c3dd9e7e29afd70cc0950079bde6c979d1f69f9
+      uses: actions/setup-python@5ccb29d8773c3f3f653e1705f474dfaa8a06a912
       with:
         python-version: '3.7' # Version range or exact version of a Python version to use, using SemVer's version range syntax
         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
