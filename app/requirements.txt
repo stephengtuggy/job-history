@@ -7,7 +7,7 @@ lazy-object-proxy==1.9.0
 mccabe==0.7.0
 psycopg2-binary==2.9.5
 pylint==2.15.10
-pytz==2022.7
+pytz==2022.7.1
 six==1.16.0
 sqlparse==0.4.3
 typed-ast==1.5.4
