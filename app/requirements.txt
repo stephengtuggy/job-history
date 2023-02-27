@@ -13,4 +13,4 @@ sqlparse==0.4.3
 typed-ast==1.5.4
 wheel==0.38.4
 whitenoise==5.3.0
-wrapt==1.14.1
+wrapt==1.15.0
