@@ -6,13 +6,13 @@ jobs:
     steps:
       - checkout
       - run: |
-          curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o ~/docker-compose
-          chmod +x ~/docker-compose
-          sudo mv ~/docker-compose /usr/local/bin/docker-compose
+          #curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o ~/docker-compose
+          #chmod +x ~/docker-compose
+          #sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run: |
           mv docker-compose.circleci.yml docker-compose.yml
       - run: |
-          docker-compose up --build --exit-code-from web --abort-on-container-exit
+          docker compose up --build --exit-code-from web --abort-on-container-exit
 workflows:
   version: 2
   on_push:
