@@ -18,17 +18,17 @@ jobs:
     # Scan runs on ubuntu, mac and windows
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+    - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633                   #v4.1.2
     # Instructions
     # 1. Setup JDK, Node.js, Python etc depending on your project type
     # 2. Compile or build the project before invoking scan
     #    Example: mvn compile, or npm install or pip install goes here
     # 3. Invoke Scan with the github token. Leave the workspace empty to use relative url
     
-    - name: Set up Python 3.7
-      uses: actions/setup-python@65d7f2d534ac1bc67fcd62888c5f4f3d2cb2b236
+    - name: Set up Python 3.11
+      uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d               #v5.1.0
       with:
-        python-version: '3.7' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+        python-version: '3.11' # Version range or exact version of a Python version to use, using SemVer's version range syntax
         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
     
     - name: Install Dependencies
@@ -37,7 +37,7 @@ jobs:
         python -m pip install --upgrade -r app/requirements.txt
 
     - name: Perform Scan
-      uses: ShiftLeftSecurity/scan-action@54980bbdae434b8e7903cfcffa98a2601c207962
+      uses: ShiftLeftSecurity/scan-action@54980bbdae434b8e7903cfcffa98a2601c207962      #v1.3.0
       env:
         WORKSPACE: ""
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
