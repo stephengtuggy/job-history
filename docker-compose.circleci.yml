@@ -24,6 +24,8 @@ services:
     networks:
       - job_history_net_1
       - job_history_internal_net
+    healthcheck:
+      test: curl --fail http://localhost:8000 || exit 1
     restart:
       "no"
   db:

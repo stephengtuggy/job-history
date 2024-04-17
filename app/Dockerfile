@@ -22,4 +22,6 @@ RUN chmod u+x docker-entrypoint.sh
 RUN chmod u+x tcp-port-wait.sh
 RUN chmod u+x manage.py
 
+HEALTHCHECK CMD curl --fail http://localhost:8000 || exit 1
+
 ENTRYPOINT [ "./docker-entrypoint.sh" ]
