@@ -6,7 +6,7 @@ isort==5.13.2
 lazy-object-proxy==1.10.0
 mccabe==0.7.0
 psycopg2-binary==2.9.9
-pylint==3.1.0
+pylint==3.1.1
 pytz==2024.1
 six==1.16.0
 sqlparse==0.5.0
