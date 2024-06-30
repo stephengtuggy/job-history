@@ -12,5 +12,5 @@ six==1.16.0
 sqlparse==0.5.0
 typed-ast==1.5.5
 wheel==0.43.0
-whitenoise==6.6.0
+whitenoise==6.7.0
 wrapt==1.16.0
