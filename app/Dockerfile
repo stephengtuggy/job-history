@@ -8,6 +8,8 @@ WORKDIR /usr/src/app
 RUN apt-get -y update
 RUN apt-get -y upgrade
 
+RUN python -m pip install --upgrade --upgrade-strategy eager pip
+
 RUN mkdir -p /usr/src/app
 COPY ./requirements.txt /usr/src/app
 RUN python -m pip install --upgrade -r ./requirements.txt
