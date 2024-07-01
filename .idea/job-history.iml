@@ -17,6 +17,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/app/static" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/data" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.12 (job-history)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

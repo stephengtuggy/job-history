@@ -9,47 +9,23 @@ services:
       - JOB_HISTORY_DEBUG
       - JOB_HISTORY_ALLOWED_HOSTS
       - JOB_HISTORY_DB_NAME
-      - JOB_HISTORY_DB_USERNAME
-      - JOB_HISTORY_DB_PASSWORD
-      - JOB_HISTORY_DB_HOST
-      - JOB_HISTORY_DB_PORT
       - JOB_HISTORY_STATIC_ROOT
       - JOB_HISTORY_STATIC_URL
     command:
       /usr/src/app/manage.py test
-    depends_on:
-      - db
     ports:
       - "8000:8000"
+    volumes:
+      - "db_data:/data"
     networks:
       - job_history_net_1
-      - job_history_internal_net
     healthcheck:
       test: curl --fail http://localhost:8000 || exit 1
-    restart:
-      "no"
-  db:
-    image:
-      postgis/postgis:15-3.4
-    container_name:
-      job_history_db
-    environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB
-    volumes:
-      - "pg_data:/var/lib/postgresql/data"
-    ports:
-      - "5432:5432"
-    networks:
-      - job_history_internal_net
     restart:
       "no"
 
 networks:
   job_history_net_1:
-  job_history_internal_net:
-    internal: true
 
 volumes:
-  pg_data:
+  db_data:

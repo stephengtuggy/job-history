@@ -136,3 +136,4 @@ dmypy.json
 *.sql
 /local-env.sh
 /app/static/
+/data/
