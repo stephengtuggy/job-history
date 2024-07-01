@@ -20,10 +20,6 @@ env = environ.Env(
     JOB_HISTORY_DEBUG=bool,
     JOB_HISTORY_ALLOWED_HOSTS=list,
     JOB_HISTORY_DB_NAME=str,
-    JOB_HISTORY_DB_USERNAME=str,
-    JOB_HISTORY_DB_PASSWORD=str,
-    JOB_HISTORY_DB_HOST=str,
-    JOB_HISTORY_DB_PORT=int,
     JOB_HISTORY_STATIC_URL=str,
     JOB_HISTORY_STATIC_ROOT=str
     )
@@ -97,12 +93,8 @@ WSGI_APPLICATION = 'jobHistorySite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE':   'django.contrib.gis.db.backends.postgis',
+        'ENGINE':   'django.db.backends.sqlite3',
         'NAME':     env('JOB_HISTORY_DB_NAME'),
-        'USER':     env('JOB_HISTORY_DB_USERNAME'),
-        'PASSWORD': env('JOB_HISTORY_DB_PASSWORD'),
-        'HOST':     env('JOB_HISTORY_DB_HOST'),
-        'PORT':     env('JOB_HISTORY_DB_PORT'),
     }
 }
 
