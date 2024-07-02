@@ -149,3 +149,5 @@ LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('jobHistory:index')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+FORM_RENDERER = "django.forms.renderers.DjangoDivFormRenderer"
