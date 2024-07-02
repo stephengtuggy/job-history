@@ -14,7 +14,7 @@
                         <a href="{% url 'jobHistory:index' %}">View job history</a>. 
                         <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
                           {% csrf_token %}
-                          <button type="submit">Log out</button>
+                          <button type="submit" class="btn-link">Log out</button>
                         </form>.
                     </div>
                 {% else %}
