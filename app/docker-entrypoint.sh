@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Abort the entire script if an error occurs
 set -e
 

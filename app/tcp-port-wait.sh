@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-set -e 
+set -e
 
 if [ -z "$1" -o -z "$2" ]
 then
