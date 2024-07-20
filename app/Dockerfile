@@ -1,12 +1,9 @@
-FROM python:3.12.4-slim-bookworm
+FROM python:3.12.4-alpine3.20
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /usr/src/app
-
-RUN apt-get -y update
-RUN apt-get -y upgrade
 
 RUN python -m pip install --upgrade --upgrade-strategy eager pip
 
