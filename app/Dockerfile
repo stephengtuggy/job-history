@@ -5,9 +5,6 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /usr/src/app
 
-RUN apt-get -y update
-RUN apt-get -y upgrade
-
 RUN python -m pip install --upgrade --upgrade-strategy eager pip
 
 RUN mkdir -p /usr/src/app
