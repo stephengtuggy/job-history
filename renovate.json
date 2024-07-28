@@ -6,6 +6,9 @@
   "addLabels": [
     "dependencies"
   ],
+  "additionalReviewers": [
+    "stephengtuggy"
+  ],
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true
 }
