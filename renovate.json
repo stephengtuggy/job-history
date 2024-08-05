@@ -10,5 +10,6 @@
     "stephengtuggy"
   ],
   "assigneesFromCodeOwners": true,
-  "reviewersFromCodeOwners": true
+  "reviewersFromCodeOwners": true,
+  "minimumReleaseAge": "1d"
 }
