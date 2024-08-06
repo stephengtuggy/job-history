@@ -5,12 +5,11 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /usr/src/app
 
-RUN python -m pip install --upgrade --upgrade-strategy eager pip
-RUN python -m pip install --upgrade --upgrade-strategy eager pipenv
+RUN python -m pip install pdm
 
 RUN mkdir -p /usr/src/app
-COPY ./requirements.txt /usr/src/app/
-RUN pipenv run pip install -r ./requirements.txt
+COPY ./pdm.lock ./pyproject.toml /usr/src/app/
+RUN pdm install
 
 COPY . /usr/src/app
 
