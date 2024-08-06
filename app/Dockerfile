@@ -5,13 +5,12 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /usr/src/app
 
-RUN python -m pip install --upgrade --upgrade-strategy eager pip
+RUN python -m pip install pdm
 
 RUN mkdir -p /usr/src/app
-COPY ./requirements.txt /usr/src/app
-RUN python -m pip install --upgrade -r ./requirements.txt
-
 COPY . /usr/src/app
+
+RUN pdm install -g -L pdm.lock
 
 RUN chmod u+x docker-entrypoint.sh
 RUN chmod u+x manage.py
