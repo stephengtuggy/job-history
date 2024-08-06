@@ -6,10 +6,11 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /usr/src/app
 
 RUN python -m pip install --upgrade --upgrade-strategy eager pip
+RUN python -m pip install --upgrade --upgrade-strategy eager pipenv
 
 RUN mkdir -p /usr/src/app
-COPY ./requirements.txt /usr/src/app
-RUN python -m pip install --upgrade -r ./requirements.txt
+COPY ./requirements.txt /usr/src/app/
+RUN pipenv run pip install -r ./requirements.txt
 
 COPY . /usr/src/app
 
