@@ -8,10 +8,9 @@ WORKDIR /usr/src/app
 RUN python -m pip install pdm
 
 RUN mkdir -p /usr/src/app
-COPY ./pdm.lock ./pyproject.toml /usr/src/app/
-RUN pdm install
-
 COPY . /usr/src/app
+
+RUN pdm install
 
 RUN chmod u+x docker-entrypoint.sh
 RUN chmod u+x manage.py
