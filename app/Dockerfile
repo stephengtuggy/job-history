@@ -10,7 +10,7 @@ RUN python -m pip install pdm
 RUN mkdir -p /usr/src/app
 COPY . /usr/src/app
 
-RUN pdm install -g
+RUN pdm install -g -L pdm.lock
 
 RUN chmod u+x docker-entrypoint.sh
 RUN chmod u+x manage.py
