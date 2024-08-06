@@ -9,6 +9,7 @@ RUN python -m pip install pdm
 
 RUN mkdir -p /usr/src/app
 COPY . /usr/src/app
+COPY ../LICENSE ../README.md /usr/src/
 
 RUN pdm install
 
