@@ -9,7 +9,7 @@ RUN python -m pip install --upgrade --upgrade-strategy eager pip
 
 RUN mkdir -p /usr/src/app
 COPY ./requirements.txt /usr/src/app
-RUN python -m pip install --upgrade -r ./requirements.txt
+RUN python -m pip install -r ./requirements.txt
 
 COPY . /usr/src/app
 
