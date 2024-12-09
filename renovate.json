@@ -11,5 +11,6 @@
   ],
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true,
-  "minimumReleaseAge": "1d"
+  "minimumReleaseAge": "1d",
+  "prConcurrentLimit": 3
 }
