@@ -6,9 +6,6 @@
   "addLabels": [
     "dependencies"
   ],
-  "additionalReviewers": [
-    "stephengtuggy"
-  ],
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true,
   "minimumReleaseAge": "1d",
