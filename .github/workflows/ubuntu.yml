@@ -17,11 +17,6 @@ jobs:
 
     env:
       JOB_HISTORY_SECRET_KEY: ${{ secrets.JOB_HISTORY_SECRET_KEY }}
-      JOB_HISTORY_ALLOWED_HOSTS: ${{ env.JOB_HISTORY_ALLOWED_HOSTS }}
-      JOB_HISTORY_DB_NAME: ${{ env.JOB_HISTORY_DB_NAME }}
-      JOB_HISTORY_DEBUG: ${{ env.JOB_HISTORY_DEBUG }}
-      JOB_HISTORY_STATIC_ROOT: ${{ env.JOB_HISTORY_STATIC_ROOT }}
-      JOB_HISTORY_STATIC_URL: ${{ env.JOB_HISTORY_STATIC_URL }}
 
     steps:
     - name: Checkout repository
