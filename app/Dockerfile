@@ -1,4 +1,4 @@
-FROM python:3.13.3-alpine3.20
+FROM dhi.io/python:3.14.3-debian13-dev
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
