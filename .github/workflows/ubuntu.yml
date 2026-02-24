@@ -1,0 +1,31 @@
+name: "Ubuntu"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+    - run: mv docker-compose.circleci.yml docker-compose.yml
+
+    - run: docker compose up --build --exit-code-from web --abort-on-container-exit
+      env:
+        JOB_HISTORY_SECRET_KEY: ${{ secrets.JOB_HISTORY_SECRET_KEY }}
+        JOB_HISTORY_ALLOWED_HOSTS: ${{ env.JOB_HISTORY_ALLOWED_HOSTS }}
+        JOB_HISTORY_DB_NAME: ${{ env.JOB_HISTORY_DB_NAME }}
+        JOB_HISTORY_DEBUG: ${{ env.JOB_HISTORY_DEBUG }}
+        JOB_HISTORY_STATIC_ROOT: ${{ env.JOB_HISTORY_STATIC_ROOT }}
+        JOB_HISTORY_STATIC_URL: ${{ env.JOB_HISTORY_STATIC_URL }}
