@@ -3,15 +3,15 @@ FROM dhi.io/python:3.14.3-debian13-dev
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /usr/src/app
+WORKDIR /usr/local/src/app
 
 RUN python -m pip install --upgrade --upgrade-strategy eager pip
 
-RUN mkdir -p /usr/src/app
-COPY ./requirements.txt /usr/src/app
+RUN mkdir -p /usr/local/src/app
+COPY ./requirements.txt /usr/local/src/app
 RUN python -m pip install --require-hashes -r ./requirements.txt
 
-COPY . /usr/src/app
+COPY . /usr/local/src/app
 
 RUN chmod u+x docker-entrypoint.sh
 RUN chmod u+x manage.py

@@ -7,7 +7,7 @@ services:
     env_file:
       ./.env
     command:
-      /usr/src/app/manage.py runserver 0.0.0.0:8000
+      /usr/local/src/app/manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     volumes:

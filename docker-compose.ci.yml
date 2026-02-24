@@ -12,7 +12,7 @@ services:
       - JOB_HISTORY_STATIC_ROOT
       - JOB_HISTORY_STATIC_URL
     command:
-      /usr/src/app/manage.py test
+      /usr/local/src/app/manage.py test
     ports:
       - "8000:8000"
     volumes:
