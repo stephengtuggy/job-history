@@ -29,6 +29,4 @@ jobs:
 
     - run: mv docker-compose.ci.yml docker-compose.yml
 
-    - run: echo $JOB_HISTORY_DB_NAME
-
     - run: docker compose up --build --exit-code-from web --abort-on-container-exit
