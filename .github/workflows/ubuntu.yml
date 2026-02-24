@@ -16,7 +16,12 @@ jobs:
       contents: read
 
     env:
-      JOB_HISTORY_SECRET_KEY: ${{ secrets.JOB_HISTORY_SECRET_KEY }}
+      JOB_HISTORY_SECRET_KEY: "${{ secrets.JOB_HISTORY_SECRET_KEY }}"
+      JOB_HISTORY_ALLOWED_HOSTS: '0.0.0.0'
+      JOB_HISTORY_DB_NAME: '/data/job_history.sqlite3'
+      JOB_HISTORY_DEBUG: false
+      JOB_HISTORY_STATIC_ROOT: '/usr/src/app/static/'
+      JOB_HISTORY_STATIC_URL: '/app/static/'
 
     steps:
     - name: Checkout repository
