@@ -1,4 +1,4 @@
-FROM python:3.13.3-alpine3.20
+FROM dhi.io/python:3.14.3-debian13-dev
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -9,7 +9,7 @@ RUN python -m pip install --upgrade --upgrade-strategy eager pip
 
 RUN mkdir -p /usr/src/app
 COPY ./requirements.txt /usr/src/app
-RUN python -m pip install -r ./requirements.txt
+RUN python -m pip install --require-hashes -r ./requirements.txt
 
 COPY . /usr/src/app
 
