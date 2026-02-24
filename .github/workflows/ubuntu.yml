@@ -1,0 +1,34 @@
+name: "Ubuntu"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+
+    env:
+      JOB_HISTORY_SECRET_KEY: "${{ secrets.JOB_HISTORY_SECRET_KEY }}"
+      JOB_HISTORY_ALLOWED_HOSTS: '0.0.0.0'
+      JOB_HISTORY_DB_NAME: '/data/job_history.sqlite3'
+      JOB_HISTORY_DEBUG: false
+      JOB_HISTORY_STATIC_ROOT: '/usr/src/app/static/'
+      JOB_HISTORY_STATIC_URL: '/app/static/'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+    - run: mv docker-compose.ci.yml docker-compose.yml
+
+    - run: echo $JOB_HISTORY_DB_NAME
+
+    - run: docker compose up --build --exit-code-from web --abort-on-container-exit
