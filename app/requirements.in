@@ -9,7 +9,6 @@ lazy-object-proxy==1.12.0
 mccabe==0.7.0
 packaging==26.0
 platformdirs==4.5.1
-pip-tools==7.5.3
 pylint==4.0.5
 pytz==2025.2
 six==1.17.0
