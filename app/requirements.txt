@@ -10,9 +10,9 @@ asgiref==3.11.1 \
     # via
     #   -r requirements.in
     #   django
-astroid==4.0.3 \
-    --hash=sha256:08d1de40d251cc3dc4a7a12726721d475ac189e4e583d596ece7422bc176bda3 \
-    --hash=sha256:864a0a34af1bd70e1049ba1e61cee843a7252c826d97825fcee9b2fcbd9e1b14
+astroid==4.0.4 \
+    --hash=sha256:52f39653876c7dec3e3afd4c2696920e05c83832b9737afc21928f2d2eb7a753 \
+    --hash=sha256:986fed8bcf79fb82c78b18a53352a0b287a73817d6dbcfba3162da36667c49a0
     # via
     #   -r requirements.in
     #   pylint
@@ -132,9 +132,9 @@ wheel==0.46.3 \
     --hash=sha256:4b399d56c9d9338230118d705d9737a2a468ccca63d5e813e2a4fc7815d8bc4d \
     --hash=sha256:e3e79874b07d776c40bd6033f8ddf76a7dad46a7b8aa1b2787a83083519a1803
     # via -r requirements.in
-whitenoise==6.12.0 \
-    --hash=sha256:f723ebb76a112e98816ff80fcea0a6c9b8ecde835f8ddda25df7a30a3c2db6ad \
-    --hash=sha256:fc5e8c572e33ebf24795b47b6a7da8da3c00cff2349f5b04c02f28d0cc5a3cc2
+whitenoise==6.11.0 \
+    --hash=sha256:0f5bfce6061ae6611cd9396a8231e088722e4fc67bc13a111be74c738d99375f \
+    --hash=sha256:b2aeb45950597236f53b5342b3121c5de69c8da0109362aee506ce88e022d258
     # via -r requirements.in
 wrapt==2.1.1 \
     --hash=sha256:05c0db35ccffd7480143e62df1e829d101c7b86944ae3be7e4869a7efa621f53 \
