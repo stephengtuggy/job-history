@@ -11,6 +11,6 @@
   "minimumReleaseAge": "1d",
   "prConcurrentLimit": 3,
   "pip_requirements": {
-    "fileMatch": "(^|/)requirements(\\.in|\\.txt)$"
+    "fileMatch": ["(^|/)requirements(\\.in|\\.txt)$"]
   }
 }
