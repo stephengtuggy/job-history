@@ -9,5 +9,8 @@
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true,
   "minimumReleaseAge": "1d",
-  "prConcurrentLimit": 3
+  "prConcurrentLimit": 3,
+  "pip_requirements": {
+    "fileMatch": "(^|/)requirements(\\.in|\\.txt)$"
+  }
 }
