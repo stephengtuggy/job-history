@@ -15,6 +15,9 @@
       "/(^|/)requirements(\\.in|\\.txt)$/"
     ]
   },
+  "ignoreDeps": [
+    "astroid"
+  ],
   "registryAliases": {
     "dhi.io": "dhi.io"
   },
