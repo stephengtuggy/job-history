@@ -12,22 +12,22 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddConstraint(
             model_name='jobtimeperiod',
-            constraint=models.CheckConstraint(check=models.Q(('is_current_position__exact', True), ('end_year__isnull', False), _connector='OR'), name='require_end_date_if_not_current_position'),
+            constraint=models.CheckConstraint(condition=models.Q(('is_current_position__exact', True), ('end_year__isnull', False), _connector='OR'), name='require_end_date_if_not_current_position'),
         ),
         migrations.AddConstraint(
             model_name='jobtimeperiod',
-            constraint=models.CheckConstraint(check=models.Q(('is_current_position__exact', False), models.Q(('end_year__isnull', True), ('end_month__isnull', True), ('end_day__isnull', True)), _connector='OR'), name='leave_end_date_blank_if_current_position'),
+            constraint=models.CheckConstraint(condition=models.Q(('is_current_position__exact', False), models.Q(('end_year__isnull', True), ('end_month__isnull', True), ('end_day__isnull', True)), _connector='OR'), name='leave_end_date_blank_if_current_position'),
         ),
         migrations.AddConstraint(
             model_name='jobtimeperiod',
-            constraint=models.CheckConstraint(check=models.Q(('start_month__isnull', False), ('start_day__isnull', True), _connector='OR'), name='require_start_month_if_start_day_specified'),
+            constraint=models.CheckConstraint(condition=models.Q(('start_month__isnull', False), ('start_day__isnull', True), _connector='OR'), name='require_start_month_if_start_day_specified'),
         ),
         migrations.AddConstraint(
             model_name='jobtimeperiod',
-            constraint=models.CheckConstraint(check=models.Q(('end_year__isnull', False), models.Q(('end_month__isnull', True), ('end_day__isnull', True)), _connector='OR'), name='require_end_year_if_end_month_specified'),
+            constraint=models.CheckConstraint(condition=models.Q(('end_year__isnull', False), models.Q(('end_month__isnull', True), ('end_day__isnull', True)), _connector='OR'), name='require_end_year_if_end_month_specified'),
         ),
         migrations.AddConstraint(
             model_name='jobtimeperiod',
-            constraint=models.CheckConstraint(check=models.Q(('end_month__isnull', False), ('end_day__isnull', True), _connector='OR'), name='require_end_month_if_end_day_specified'),
+            constraint=models.CheckConstraint(condition=models.Q(('end_month__isnull', False), ('end_day__isnull', True), _connector='OR'), name='require_end_month_if_end_day_specified'),
         ),
     ]
