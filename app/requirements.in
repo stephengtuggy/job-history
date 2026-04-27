@@ -7,7 +7,7 @@ django-environ==0.13.0
 isort==8.0.1
 lazy-object-proxy==1.12.0
 mccabe==0.7.0
-packaging==26.1
+packaging==26.2
 platformdirs==4.9.6
 pylint==4.0.5
 pytz==2026.1.post1
