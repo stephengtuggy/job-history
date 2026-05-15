@@ -1,11 +1,9 @@
-FROM dhi.io/python:3.14.3-debian13-dev
+FROM dhi.io/python:3.14.5-debian13-sfw-dev
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /usr/local/src/app
-
-RUN python -m pip install --upgrade --upgrade-strategy eager pip
 
 RUN mkdir -p /usr/local/src/app
 COPY ./requirements.txt /usr/local/src/app
