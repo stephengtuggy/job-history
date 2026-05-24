@@ -1,4 +1,4 @@
-FROM dhi.io/python:3.14.5-debian13-sfw-dev
+FROM dhi.io/python:3.14-debian13-sfw-dev
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
