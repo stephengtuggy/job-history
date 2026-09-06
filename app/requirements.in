@@ -14,6 +14,6 @@ pytz==2026.2
 six==1.17.0
 sqlparse==0.6.0
 tomlkit==0.15.0
-wheel==0.47.0
+wheel==0.48.0
 whitenoise==6.12.0
 wrapt==2.2.2
