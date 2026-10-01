@@ -26,9 +26,9 @@ dill==0.4.1 \
     # via
     #   -r requirements.in
     #   pylint
-Django==6.0.7 \
-    --hash=sha256:2998503fc083124fb58037084bfa00de323c7c743f05f1b4284e77bff0ab8890 \
-    --hash=sha256:a037427c2288443a8c02a1b02295a31c239663aa682bc50b1976afb7cf6a769e
+Django==6.1.1 \
+    --hash=sha256:585fb82bf15053c42cf52e67c2f1b54a032dca384759315fd6678ab1870d1d72 \
+    --hash=sha256:7ab93536d8e677aa14554c56426290c69480bf2ee68d7513d4a22f57d6bfeb84
     # via -r requirements.in
 django-environ==0.14.0 \
     --hash=sha256:8dbe8a57f0a540ab8abd6f54f230de5e99e3a2c9d797cb9caecb037bca3d47d8 \
@@ -98,9 +98,9 @@ packaging==26.2 \
     # via
     #   -r requirements.in
     #   wheel
-platformdirs==4.11.3 \
-    --hash=sha256:5ed065d443751de711da036041a7a214122efc4a4de393b3f4137ba5576540e7 \
-    --hash=sha256:66a73d38a849810252df809a3d8bcbda8e26f6c189920e7535ad608a48dbb5ab
+platformdirs==4.12.2 \
+    --hash=sha256:29dbf06d96c500bc6bdbce75fb0a14d63279c93b1842f97e72a135b33e856983 \
+    --hash=sha256:eab5f70271a490ef74618bb314fbb86e3c7e82fa3b9c922c2ea0e0a1a155d329
     # via
     #   -r requirements.in
     #   pylint
@@ -122,9 +122,9 @@ sqlparse==0.6.0 \
     # via
     #   -r requirements.in
     #   django
-tomlkit==0.15.0 \
-    --hash=sha256:4dbc8f0fc024412b57ced8757ac7461305126a648ff8c2c807fcb8e133a78738 \
-    --hash=sha256:7d1a9ecba3086638211b13814ea79c90dd54dd11993564376f3aa92271f5c7a3
+tomlkit==0.15.1 \
+    --hash=sha256:177a05aece5a8ca5266fd3c448abb47b8d352f09d477d3ca8332db4d89b24304 \
+    --hash=sha256:e25bbf38843005246210a12982776f27f99cb9be67160e14434d0c0d21ee1e97
     # via
     #   -r requirements.in
     #   pylint
