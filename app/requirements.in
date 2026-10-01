@@ -10,7 +10,7 @@ mccabe==0.7.0
 packaging==26.3
 platformdirs==4.12.2
 pylint==4.0.6
-pytz==2026.2
+pytz==2026.4
 six==1.17.0
 sqlparse==0.6.0
 tomlkit==0.15.1
