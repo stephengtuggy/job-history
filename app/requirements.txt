@@ -26,7 +26,7 @@ dill==0.4.1 \
     # via
     #   -r requirements.in
     #   pylint
-Django==6.1.1 \
+django==6.1.1 \
     --hash=sha256:585fb82bf15053c42cf52e67c2f1b54a032dca384759315fd6678ab1870d1d72 \
     --hash=sha256:7ab93536d8e677aa14554c56426290c69480bf2ee68d7513d4a22f57d6bfeb84
     # via -r requirements.in
@@ -104,9 +104,9 @@ platformdirs==4.12.2 \
     # via
     #   -r requirements.in
     #   pylint
-pylint==4.0.6 \
-    --hash=sha256:52f19191bee08bf103f9705ad1a0ece4aa5a0a4ef2bdcbd969375a1e6f6579d5 \
-    --hash=sha256:d11a0e1fdb7b1cd46ec5d6fc78fee8b95f28695b2d6140e5809925f61e32ea54
+pylint==4.0.10 \
+    --hash=sha256:bf19280b10f2185bfbc898a28ac0b85c958af2e6d684a94984e12d3ac975d9f4 \
+    --hash=sha256:c259421f734e6262407b6a421a26f9513b13ac2c5ac2c160775c1658afb57fea
     # via -r requirements.in
 pytz==2026.4 \
     --hash=sha256:464303645bafafd72418898368b2429458f709cf1eb6a15372fbcc396b64da63 \
