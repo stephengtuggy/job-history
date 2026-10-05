@@ -16,7 +16,6 @@
     ]
   },
   "ignoreDeps": [
-    "astroid"
   ],
   "registryAliases": {
     "dhi.io": "dhi.io"
