@@ -10,7 +10,7 @@ mccabe==0.7.0
 mypy_extensions==1.1.0
 packaging==26.3
 platformdirs==4.14.5
-pylint==4.1.2
+pylint==4.1.4
 pytz==2026.5
 six==1.17.0
 sqlparse==0.6.0
