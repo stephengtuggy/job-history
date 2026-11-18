@@ -38,4 +38,4 @@ Thanks!
 
 ## Updating Dependencies
 
-For the most part, Renovate Bot and Dependabot should take care of dependency updates by generating Pull Requests for each one. Simply merging the PRs should take care of many of the project's dependency-update needs. However, if dependencies need to be updated manually, create a virtualenv for the project (if not already done); activate the virtualenv; install `pip-tools` in the virtualenv (if not already installed); and run `pip-compile --upgrade requirements.in` to upgrade everything.
+For the most part, Renovate Bot and Dependabot should take care of dependency updates by generating Pull Requests for each one. Simply merging the PRs should take care of many of the project's dependency-update needs. However, if dependencies need to be updated manually, create a virtualenv for the project (if not already done); activate the virtualenv; install `pip-tools` in the virtualenv (if not already installed); and run ` pip-compile --upgrade --generate-hashes --strip-extras -r app/requirements.in` to upgrade everything.
