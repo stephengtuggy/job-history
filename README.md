@@ -35,3 +35,7 @@ Good luck!
 P.S. Feel free to submit issues or Pull Requests for any additional fields that should be added for data that is required on any job application. This app is intended to be as all-inclusive as possible when it comes to data fields.
 
 Thanks!
+
+## Updating Dependencies
+
+For the most part, Renovate Bot and Dependabot should take care of dependency updates by generating Pull Requests for each one. Simply merging the PRs should take care of many of the project's dependency-update needs. However, if dependencies need to be updated manually, create a virtualenv for the project (if not already done); activate the virtualenv; install `pip-tools` in the virtualenv (if not already installed); and run ` pip-compile --upgrade --generate-hashes --strip-extras -r app/requirements.in` to upgrade everything.
