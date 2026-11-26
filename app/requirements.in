@@ -10,7 +10,7 @@ isort==9.0.2
 lazy-object-proxy==1.13.0
 mccabe==0.7.0
 mypy_extensions==1.2.0
-packaging==26.3
+packaging==26.4
 pip-tools==7.7.0
 platformdirs==4.14.8
 pylint==4.1.4
